@@ -6,7 +6,7 @@ import (
 
 func TestExtractTranscriptFromMarkdown(t *testing.T) {
 	t.Run("extracts transcript entries", func(t *testing.T) {
-		content := `# Payments Team Stand-Up
+		content := `# Engineering Team Stand-Up
 Date: 2026-01-21 20:30
 Meeting ID: 8cd7703f-3e72-47b9-97ce-9cd3f803a20c
 

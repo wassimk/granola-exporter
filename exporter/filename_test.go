@@ -55,15 +55,15 @@ func TestSafeFilename(t *testing.T) {
 		},
 		{
 			name:     "handles Person <> Person pattern",
-			title:    "Katherine <> Wassim",
+			title:    "Alice <> Bob",
 			dateStr:  "2025-01-24",
-			expected: "2025-01-24_Katherine  Wassim.md",
+			expected: "2025-01-24_Alice  Bob.md",
 		},
 		{
 			name:     "handles colons in titles",
-			title:    "Planning Center <> Stripe: Proserv Weekly",
+			title:    "Acme Corp <> Globex: Weekly Sync",
 			dateStr:  "2025-01-24",
-			expected: "2025-01-24_Planning Center  Stripe Proserv Weekly.md",
+			expected: "2025-01-24_Acme Corp  Globex Weekly Sync.md",
 		},
 		{
 			name:     "preserves Unicode emojis",
