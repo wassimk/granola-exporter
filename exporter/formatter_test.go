@@ -8,7 +8,7 @@ import (
 func TestFormatDocumentMarkdown(t *testing.T) {
 	t.Run("document with notes only", func(t *testing.T) {
 		doc := &Document{
-			ID:            "8cd7703f-3e72-47b9-97ce-9cd3f803a20c",
+			ID:            "abc12345-1234-5678-9abc-def012345678",
 			Title:         "Engineering Team Stand-Up",
 			CreatedAt:     "2026-01-21T20:30:01.410Z",
 			NotesMarkdown: "# Action Items\n\n- Follow up on project timeline",
@@ -22,7 +22,7 @@ func TestFormatDocumentMarkdown(t *testing.T) {
 		if !strings.Contains(result, "Date: 2026-01-21 20:30") {
 			t.Error("Expected formatted date in output")
 		}
-		if !strings.Contains(result, "Meeting ID: 8cd7703f-3e72-47b9-97ce-9cd3f803a20c") {
+		if !strings.Contains(result, "Meeting ID: abc12345-1234-5678-9abc-def012345678") {
 			t.Error("Expected meeting ID in output")
 		}
 		if !strings.Contains(result, "## AI-Generated Notes") {
