@@ -1,5 +1,8 @@
 # Granola Meeting Exporter
 
+> [!WARNING]
+> This is early-stage software that works for my personal use case. Expect breaking changes, bugs, and rough edges as I continue to develop it.
+
 Exports meeting notes and transcripts from [Granola](https://www.granola.so)'s local cache to markdown files.
 
 ## What it exports
@@ -95,3 +98,7 @@ Meeting ID: abc-123
 
 **Them:** [Other participant's words]
 ```
+
+## Disclaimer
+
+This project is not affiliated with, endorsed by, or connected to [Granola](https://www.granola.so) in any way. I love Granola and use it every day—this is just a personal utility to export my meeting data.
