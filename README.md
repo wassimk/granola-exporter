@@ -7,15 +7,15 @@ Exports meeting notes and transcripts from [Granola](https://www.granola.so)'s l
 
 ## What it exports
 
-- **AI-generated meeting notes** - Granola's AI summaries and notes
-- **Full transcripts** - Complete word-for-word transcripts when available
-- **Both together** - Files include both notes and transcripts when both exist
+- 🤖 **AI-generated meeting notes** - Granola's AI summaries and notes
+- 🎙️ **Full transcripts** - Complete word-for-word transcripts when available
+- 📄 **Both together** - Files include both notes and transcripts when both exist
 
 ## Features
 
-- **Smart caching** - Only writes changed files (efficient for hourly cron runs)
-- **Version detection** - Auto-detects latest Granola cache version (`cache-v3.json`, `cache-v4.json`, etc.)
-- **Data protection** - Preserves transcripts even if Granola purges them from cache
+- ⚡ **Smart caching** - Only writes changed files (efficient for hourly cron runs)
+- 🔍 **Version detection** - Auto-detects latest Granola cache version (`cache-v3.json`, `cache-v4.json`, etc.)
+- 🛡️ **Data protection** - Preserves transcripts even if Granola purges them from cache
 
 ## Installation
 
