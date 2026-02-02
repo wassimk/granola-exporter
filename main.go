@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/wassimk/granola-exporter/exporter"
 )
@@ -45,7 +46,7 @@ func main() {
 
 	// Handle --version
 	if showVersion {
-		fmt.Printf("granola-exporter %s\n", version)
+		fmt.Println(strings.TrimPrefix(version, "v"))
 		os.Exit(0)
 	}
 
