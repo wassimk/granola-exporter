@@ -9,14 +9,14 @@ func TestFormatDocumentMarkdown(t *testing.T) {
 	t.Run("document with notes only", func(t *testing.T) {
 		doc := &Document{
 			ID:            "8cd7703f-3e72-47b9-97ce-9cd3f803a20c",
-			Title:         "Payments Team Stand-Up",
+			Title:         "Engineering Team Stand-Up",
 			CreatedAt:     "2026-01-21T20:30:01.410Z",
 			NotesMarkdown: "# To Do\n\n- Review the incident post-mortem",
 		}
 
 		result := FormatDocumentMarkdown(doc, nil)
 
-		if !strings.Contains(result, "# Payments Team Stand-Up") {
+		if !strings.Contains(result, "# Engineering Team Stand-Up") {
 			t.Error("Expected title to be in output")
 		}
 		if !strings.Contains(result, "Date: 2026-01-21 20:30") {
