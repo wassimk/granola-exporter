@@ -20,11 +20,11 @@ Some notes here.
 
 ## Transcript
 
-**Them:** We're on the tail end of the incidents.
+**Them:** Let's start with the first agenda item.
 
 **Me:** Got it, thanks for the update.
 
-**Them:** The post-mortem is tomorrow.
+**Them:** The meeting is scheduled for next week.
 
 `
 		result := ExtractTranscriptFromMarkdown(content)
@@ -35,7 +35,7 @@ Some notes here.
 		if len(result) != 3 {
 			t.Errorf("Expected 3 entries, got %d", len(result))
 		}
-		if result[0].Text != "We're on the tail end of the incidents." {
+		if result[0].Text != "Let's start with the first agenda item." {
 			t.Errorf("Unexpected text: %s", result[0].Text)
 		}
 		if result[0].Source != "system" {
