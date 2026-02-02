@@ -91,9 +91,9 @@ func TestSafeFilename(t *testing.T) {
 		},
 		{
 			name:     "handles question marks",
-			title:    "Is Planning Center the right fit?",
+			title:    "Is this the right fit?",
 			dateStr:  "2025-01-24",
-			expected: "2025-01-24_Is Planning Center the right fit.md",
+			expected: "2025-01-24_Is this the right fit.md",
 		},
 	}
 
