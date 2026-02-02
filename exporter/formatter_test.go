@@ -11,7 +11,7 @@ func TestFormatDocumentMarkdown(t *testing.T) {
 			ID:            "8cd7703f-3e72-47b9-97ce-9cd3f803a20c",
 			Title:         "Engineering Team Stand-Up",
 			CreatedAt:     "2026-01-21T20:30:01.410Z",
-			NotesMarkdown: "# To Do\n\n- Review the incident post-mortem",
+			NotesMarkdown: "# Action Items\n\n- Follow up on project timeline",
 		}
 
 		result := FormatDocumentMarkdown(doc, nil)
@@ -28,7 +28,7 @@ func TestFormatDocumentMarkdown(t *testing.T) {
 		if !strings.Contains(result, "## AI-Generated Notes") {
 			t.Error("Expected AI-Generated Notes section")
 		}
-		if !strings.Contains(result, "Review the incident post-mortem") {
+		if !strings.Contains(result, "Follow up on project timeline") {
 			t.Error("Expected notes content in output")
 		}
 		if strings.Contains(result, "## Transcript") {
