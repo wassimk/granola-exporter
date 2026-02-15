@@ -5,19 +5,19 @@
 
 Exports meeting notes and transcripts from [Granola](https://www.granola.so)'s local cache to markdown files.
 
-## What it exports
+## 📤 What it exports
 
 - 🤖 **AI-generated meeting notes** - Granola's AI summaries and notes
 - 🎙️ **Full transcripts** - Complete word-for-word transcripts when available
 - 📄 **Both together** - Files include both notes and transcripts when both exist
 
-## Features
+## ✨ Features
 
 - ⚡ **Smart caching** - Only writes changed files (efficient for hourly cron runs)
 - 🔍 **Version detection** - Auto-detects latest Granola cache version (`cache-v3.json`, `cache-v4.json`, etc.)
 - 🛡️ **Data protection** - Preserves transcripts even if Granola purges them from cache
 
-## Installation
+## 🛠️ Installation
 
 Download the latest binary from the [Releases](https://github.com/wassimk/granola-exporter/releases) page.
 
@@ -27,7 +27,7 @@ Or build from source:
 go install github.com/wassimk/granola-exporter@latest
 ```
 
-## Usage
+## 💻 Usage
 
 Run the exporter:
 
@@ -43,7 +43,7 @@ granola-exporter
 -o, --output-dir   Custom output directory (default: ~/.local/share/granola-transcripts)
 ```
 
-## Automated export with cron
+## ⏰ Automated export with cron
 
 Set up hourly automated exports:
 
@@ -57,14 +57,14 @@ Add this line:
 0 * * * * /path/to/granola-exporter >> /tmp/granola-export.log 2>&1
 ```
 
-## How it works
+## ⚙️ How it works
 
 - **Reads from:** `~/Library/Application Support/Granola/cache-v*.json` (auto-detects version)
 - **Exports to:** `~/.local/share/granola-transcripts/`
 - **Format:** Markdown with AI notes section and transcript section (when available)
 - **Filename:** `YYYY-MM-DD_Meeting_Title.md`
 
-## Important: Transcript Availability
+## ⚠️ Important: Transcript Availability
 
 **Granola does not keep all transcripts in its local cache.** Transcripts are fetched from Granola's servers on-demand when you open a meeting, and older transcripts are periodically purged from the cache.
 
@@ -75,7 +75,7 @@ This means:
 
 **Data protection:** Once this tool exports a transcript, it preserves it forever—even if Granola later purges it from cache. The tool merges the latest AI notes with any previously exported transcript, so you never lose data.
 
-## Output format
+## 📄 Output format
 
 Each exported file contains:
 
@@ -99,6 +99,6 @@ Meeting ID: abc-123
 **Them:** [Other participant's words]
 ```
 
-## Disclaimer
+## 📝 Disclaimer
 
 This project is not affiliated with, endorsed by, or connected to [Granola](https://www.granola.so) in any way. I love Granola and use it every day—this is just a personal utility to export my meeting data.
