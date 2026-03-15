@@ -14,7 +14,7 @@ builds:
       - -s -w -X main.version={{.Version}}
     hooks:
       post:
-        - cmd: codesign --force --options runtime --sign "Developer ID Application: Wassim Metallaoui ({{ .Env.APPLE_TEAM_ID }})" "{{ .Path }}"
+        - cmd: 'codesign --force --options runtime --sign "Developer ID Application: Wassim Metallaoui ({{ .Env.APPLE_TEAM_ID }})" "{{ .Path }}"'
 
 archives:
   - formats: ["tar.gz"]
