@@ -1,7 +1,10 @@
 # Binaries
-granola-exporter
-granola-exporter-*
+granary
+granary-*
 *.exe
+
+# GoReleaser
+dist/
 
 # Test coverage
 coverage.out

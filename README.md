@@ -1,7 +1,4 @@
-# Granola Meeting Exporter
-
-> [!WARNING]
-> This is early-stage software that works for my personal use case. Expect breaking changes, bugs, and rough edges as I continue to develop it.
+# Granary
 
 Exports meeting notes and transcripts from [Granola](https://www.granola.so)'s local cache to markdown files.
 
@@ -13,39 +10,69 @@ Exports meeting notes and transcripts from [Granola](https://www.granola.so)'s l
 
 ## ✨ Features
 
-- ⚡ **Smart caching** - Only writes changed files (efficient for hourly cron runs)
+- ⚡ **Smart caching** - Only writes changed files (efficient for scheduled runs)
 - 🔍 **Version detection** - Auto-detects latest Granola cache version (`cache-v3.json`, `cache-v4.json`, etc.)
 - 🛡️ **Data protection** - Preserves transcripts even if Granola purges them from cache
+- 🕐 **Background service** - Built-in macOS LaunchAgent for automatic exports every 6 hours
 
 ## 🛠️ Installation
 
-Download the latest binary from the [Releases](https://github.com/wassimk/granola-exporter/releases) page.
-
-Or build from source:
+### Homebrew
 
 ```bash
-go install github.com/wassimk/granola-exporter@latest
+brew install wassimk/tap/granary
+```
+
+### From source
+
+```bash
+go install github.com/wassimk/granary@latest
 ```
 
 ## 💻 Usage
 
-Run the exporter:
+### Export meeting notes
 
 ```bash
-granola-exporter
+granary run
 ```
 
-### Options
+#### Options
 
 ```
--h, --help         Show help message
--V, --version      Show version number
 -o, --output-dir   Custom output directory (default: ~/.local/share/granola-transcripts)
 ```
 
-## ⏰ Automated export with cron
+### Background service (LaunchAgent)
 
-Set up hourly automated exports:
+Install a macOS LaunchAgent that automatically exports every 6 hours:
+
+```bash
+granary install
+```
+
+Check the service status:
+
+```bash
+granary status
+```
+
+Remove the background service:
+
+```bash
+granary uninstall
+```
+
+### Other commands
+
+```bash
+granary version    # Show version
+granary help       # Show help
+```
+
+## ⏰ Alternative: cron
+
+If you prefer cron over the built-in LaunchAgent:
 
 ```bash
 crontab -e
@@ -54,7 +81,7 @@ crontab -e
 Add this line:
 
 ```bash
-0 * * * * /path/to/granola-exporter >> /tmp/granola-export.log 2>&1
+0 */6 * * * /opt/homebrew/bin/granary run >> /tmp/granary.log 2>&1
 ```
 
 ## ⚙️ How it works
@@ -73,7 +100,7 @@ This means:
 - **New meetings:** Transcripts appear in cache after you view them in Granola
 - **Old meetings:** Even if you viewed them before, the transcript may no longer be in cache
 
-**Data protection:** Once this tool exports a transcript, it preserves it forever—even if Granola later purges it from cache. The tool merges the latest AI notes with any previously exported transcript, so you never lose data.
+**Data protection:** Once this tool exports a transcript, it preserves it forever. Even if Granola later purges it from cache. The tool merges the latest AI notes with any previously exported transcript, so you never lose data.
 
 ## 📄 Output format
 
@@ -101,4 +128,4 @@ Meeting ID: abc-123
 
 ## 📝 Disclaimer
 
-This project is not affiliated with, endorsed by, or connected to [Granola](https://www.granola.so) in any way. I love Granola and use it every day—this is just a personal utility to export my meeting data.
+This project is not affiliated with, endorsed by, or connected to [Granola](https://www.granola.so) in any way. I love Granola and use it every day. This is just a personal utility to export my meeting data.
