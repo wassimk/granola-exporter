@@ -47,9 +47,9 @@ func (e *Exporter) Export(state *CacheState, verbose bool) (*ExportResult, error
 
 	result := &ExportResult{}
 
-	// Collect exportable documents
+	// Collect exportable documents (owned + shared)
 	var exportable []Document
-	for _, doc := range state.Documents {
+	for _, doc := range state.AllDocuments() {
 		if doc.HasExportableContent(state.Transcripts) {
 			exportable = append(exportable, doc)
 		}

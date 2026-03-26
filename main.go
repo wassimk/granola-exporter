@@ -117,6 +117,7 @@ func runExport(outputDir string) error {
 	}
 
 	fmt.Printf("Found %d documents\n", len(state.Documents))
+	fmt.Printf("Found %d shared documents\n", len(state.SharedDocuments))
 	fmt.Printf("Found %d transcripts\n\n", len(state.Transcripts))
 
 	exp := exporter.NewExporter(outputDir)

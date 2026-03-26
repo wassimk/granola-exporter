@@ -54,6 +54,40 @@ func TestExporter(t *testing.T) {
 		}
 	})
 
+	t.Run("exports shared documents", func(t *testing.T) {
+		tmpDir := t.TempDir()
+		exp := NewExporter(tmpDir)
+
+		state := &CacheState{
+			Documents: map[string]Document{
+				"doc1": {ID: "doc1", Title: "My Meeting", CreatedAt: "2026-01-21T10:00:00Z", NotesMarkdown: "# My notes here"},
+			},
+			SharedDocuments: map[string]Document{
+				"doc2": {ID: "doc2", Title: "Shared Meeting", CreatedAt: "2026-01-21T11:00:00Z", NotesMarkdown: "# Shared notes here"},
+			},
+			Transcripts: map[string][]TranscriptEntry{},
+		}
+
+		result, err := exp.Export(state, false)
+		if err != nil {
+			t.Fatalf("Unexpected error: %v", err)
+		}
+
+		if result.Written != 2 {
+			t.Errorf("Expected 2 written (1 owned + 1 shared), got %d", result.Written)
+		}
+
+		// Verify shared document file was created
+		sharedPath := filepath.Join(tmpDir, "2026-01-21_Shared Meeting.md")
+		content, err := os.ReadFile(sharedPath)
+		if err != nil {
+			t.Fatalf("Failed to read shared document file: %v", err)
+		}
+		if !strings.Contains(string(content), "Shared notes here") {
+			t.Error("Expected shared document notes in output")
+		}
+	})
+
 	t.Run("skips documents with neither notes nor transcript", func(t *testing.T) {
 		tmpDir := t.TempDir()
 		exp := NewExporter(tmpDir)
