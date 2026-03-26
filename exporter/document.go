@@ -22,8 +22,22 @@ type TranscriptEntry struct {
 
 // CacheState holds the parsed state from the Granola cache.
 type CacheState struct {
-	Documents   map[string]Document          `json:"documents"`
-	Transcripts map[string][]TranscriptEntry `json:"transcripts"`
+	Documents       map[string]Document          `json:"documents"`
+	SharedDocuments map[string]Document          `json:"sharedDocuments"`
+	Transcripts     map[string][]TranscriptEntry `json:"transcripts"`
+}
+
+// AllDocuments returns all documents (owned + shared) as a single map.
+// Owned documents take precedence if a document ID appears in both.
+func (s *CacheState) AllDocuments() map[string]Document {
+	all := make(map[string]Document, len(s.Documents)+len(s.SharedDocuments))
+	for id, doc := range s.SharedDocuments {
+		all[id] = doc
+	}
+	for id, doc := range s.Documents {
+		all[id] = doc
+	}
+	return all
 }
 
 // HasExportableContent returns true if the document has content worth exporting.

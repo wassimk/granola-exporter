@@ -121,6 +121,9 @@ func ParseCache(data []byte) (*CacheState, error) {
 	if inner.State.Documents == nil {
 		inner.State.Documents = make(map[string]Document)
 	}
+	if inner.State.SharedDocuments == nil {
+		inner.State.SharedDocuments = make(map[string]Document)
+	}
 	if inner.State.Transcripts == nil {
 		inner.State.Transcripts = make(map[string][]TranscriptEntry)
 	}
